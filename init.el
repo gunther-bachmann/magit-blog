@@ -57,6 +57,6 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(magit-status "~/.emacs.d")
 (delete-other-windows)
 
+(call-interactively 'magit-status)
