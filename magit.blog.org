@@ -66,6 +66,16 @@
 * commit detail
   Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot.  Tab will fold/unfold changes listed by
   this commit. To leave this screen simply use 'q'. You see, navigating through these 'screens' is quite easy right at your finger tips!
+* tdd session
+** create branch
+   - branch spin-off
+** add a test (run, commit)
+** write some code (run, commit)
+** add a second test (run, commit)
+** write some more code (run, commit)
+** now squash commits to (partial) feature commit
+   - rebase interactive, squash intermediate commits into one
+** push (partial) feature commit
 * present alternative to command line (bash, zsh and others)
   most of you know about the command line interface of git.
 * textual interface
