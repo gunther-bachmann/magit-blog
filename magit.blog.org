@@ -10,55 +10,55 @@
     - minor
       - pure keyboard usage is faster, with help screens not much less convenient than guis
 * intro
-  This is not about the merits of git. This is about working with git in a text based environment, to which programmers are (actually) used
-  to. Having said that we can now dive into the world of magit, a text based ui for git. You are still reading? Cool, stay with me and it
-  might give you a new perspective on how programmers using these /archaic/ interfaces can become more efficient in their daily routine. And
-  hey, it's a lot of fun, too! Still reading? Very cool! Then let's dive into the world of magit.
+  This is not about the merits of git. This is about working with git in a text based environment, to which programmers are (usually) used
+  to. Having said that, we can now dive into the world of magit, a text based ui for git. You are still reading this? Cool, keep going and
+  it might give you a new perspective on how programmers using these /archaic/ interfaces are quite efficient in their daily routine. And
+  hey, it's a lot of fun, too! Still reading? Very cool!
 * first repo
   Let's say you start your life in git with a simple clone like `git clone git@github.com/test-editor/web-test-editor` on the
   terminal. Since I didn't want to talk about the merits of git, I will restrict my comments about git to a minimum. I will however mention
-  things a seasoned /gitter/ will already know or will believe to be quite obvious, in order to anyone interested but not yet familiar with
-  every caveat of git to follow this article.
+  things a seasoned /gitter/ will already know or will believe to be quite obvious, so that anyone interested but not yet familiar with
+  every caveat of git will feel comfortable following this article. At least that is my intention.
 
   Now back to our initial clone. This will leave us with a local repository that is cloned from a remote repository. Now what does magit
-  have to offer here. Starting magit[fn:1] on this repository will give you the following screen: (screenshot) Let's go through the different
-  sections of this screen:
+  have to offer here. Starting magit[fn:1] on this repository will give you the following screen: <- TODO: insert screenshot -> Let's go
+  through the different sections of this screen:
   - head
   - merge
   - stashes
   - recent commits
 * Magit popup
-  The primary user interface to magit is provided through so called popups. To get a list of all command keys available use '?' and you will
-  see a /popup/ like this <- TODO: screenshot of magit help popup ->
-  Each magit command will start its respective popup, giving you the chance to add options and switches to the command. Each popup can be
-  customized to use certain options or switches by default. We will look into some of those possibilities later on in the context of certain
-  commands (e.g. commit)
+  The primary user interface to magit is provided through so called popups (appearing in the lower half of the screen). To get a list of all
+  command keys available use '?' and you will see a /popup/ like this <- TODO: screenshot of magit help popup -> Each magit command will
+  start its respective popup, giving you the chance to add options and switches to the command. Each popup can be customized to use certain
+  options or switches by default. We will look into some of those possibilities later on in the context of certain commands (e.g. commit)
 * basic navigation
   To make use of our textual interface I want to introduce some basic keyboard commands that will be used throughout magit and throughout
   this introduction.
-  - up/down - to move the point or cursor
+  - up/down - to move the point or cursor (that was obious, I know)
   - tab - to open/close details in a tree like fashion
   - enter - to get details of the item under point or cursor in a separate window
   - q - to quit to the previous screen
   Using tab you can fold and unfold several sections on this screen. On other screens (e.g. the following commit details screen) this will
-  be more helpful that it might seem here.
+  be more helpful than it might seem here.
 * own commit
-  Given a change on a file already part of the index, the overview will show unstaged changes. These can be staged by simply pressing `s`
-  when the point is over the respective file. `S` will stage all unstaged files after asking for approval for that action. If you want to
-  stage certain hunks within in file, open details of the respective file by pressing `tab` which opens all hunks within this file, marking
-  changes with -/+ and color and displaying the context (3 preceding/following lines). Each hunk can again be folded/unfolded with `tab`
-  and can individually staged with `s`. You can even mark lines within a hunk that you want to state using `shift` and the cursor keys (or
-  more emacs like `C-SPC` and then movement commands `C-p` or `C-n` (previous/next line). <- TODO screenshots ->
+  Given we have a change on a file already part of the index, the overview will show unstaged changes. These can be staged by simply
+  pressing `s` if the point is over the respective file. `S` (note that this is a capital S) will stage all unstaged files after asking for
+  approval for that action. If you want to stage certain chunks within a file, open its details by pressing `tab`, which opens the relevant
+  chunks within this file, marking changes with -/+ and color and displaying the context (3 preceding/following lines). Each chunk can again
+  be folded/unfolded with `tab` and can individually staged with `s`. You can even mark lines within a chunk that you want to state using
+  `shift` and the cursor keys[fn:2]. <- TODO screenshots ->
 
-  All this holds true for unstaging via `u`, given you are working on a file in the staged area.
+  Unstaging via `u` behaves respectively, given that you are working on a file in the staged area.
 
-  Given a list of staged changes pressing `c` will open the commit popup, giving you the chance to use additional switches or options. You
+  Given a list of staged changes, pressing `c` will open the commit popup, giving you the chance to use additional switches or options. You
   may now select a simple commit via `c`, amend the previous commit with `a` or reword the previous commit via `w`. There are a lot more
   subcommands available that you may explore at your discretion.
 
   Say you stick with a regular commit, you are then presented with a screen to write the commit message. The commit message holds reminders
-  of what will be commit, on which you currently are and the like. When done hit `C-c` twice (`C-c` `C-k` aborts the commit). Given you
-  committed your changes, the status screen is shown again, which presents you with a new, unpushed commit. <- TODO screenshot ->
+  of what will be committed, on which branch you currently are and the like. When done hit `C-c` twice (`C-c` `C-k` aborts the
+  commit). Given you committed your changes, the status screen is shown again, which presents you with a new, unpushed commit. <- TODO
+  screenshot ->
 * log history
   On status screen, you can press `l` to get to the log popup, which allows you to use additional switches and options for the log. Pressing
   `l` again will open the log for the current branch you are on and display the log history. Your new commit should be at the head of this
@@ -79,6 +79,8 @@
 ** stash stash/view/apply/pop
 
 * Footnotes
+
+[fn:2] More emacs like are `C-SPC` and then movement commands as `C-p` or `C-n` (previous/next line)
 
 [fn:1] If you want to follow the examples, please clone this repository <- TODO: put the repository link here -> that holds a readme with
 all prerequisites you need and a couple of scripts that will make your life easier.
