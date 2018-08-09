@@ -1,5 +1,6 @@
 #+Title: Magit Blog
 * meta info
+  - sticker and graphics: https://magit.vc/buy/
   - decide on which repo to use
   - provide repo with emacs startup ini to follow the given examples
   - provide repo with blog itself (all blog entries of me, starting with this one)
