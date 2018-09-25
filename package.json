@@ -9,7 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "engine": { "node": ">=9.0.0" },
+  "engine": {
+    "node": ">=9.0.0"
+  },
   "private": false,
   "dependencies": {
     "@angular/animations": "^6.1.0",
