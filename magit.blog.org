@@ -67,7 +67,7 @@
 * commit detail
   Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot.  Tab will fold/unfold changes listed by
   this commit. To leave this screen simply use 'q'. You see, navigating through these 'screens' is quite easy right at your finger tips!
-* tdd session
+* tdd session (create angular project, add jasmine karma unit test, run headless)
 ** create branch
    - branch spin-off
 ** add a test (run, commit)
