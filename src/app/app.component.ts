@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dummy';
+
+  // greet(name: string): string {
+  //   if (name === 'Gunther') {
+  //     return 'Pleased to meet you.';
+  //   } else {
+  //     return 'Who are you?';
+  //   }
+  // }
+
 }
