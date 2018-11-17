@@ -5,7 +5,6 @@ stdenv.mkDerivation {
     buildInputs = [
         nodejs-9_x
         nodePackages.npm
-        # nodePackages.yarn
         nodePackages.jsonlint
         bashInteractive
     ];
@@ -16,6 +15,6 @@ stdenv.mkDerivation {
         # put all linked executables in node_modules on the path
         export PATH=`pwd`/node_modules/.bin:$PATH
         # run a fresh build to ensure node_modules is populated with all necessary dependencies
-        npm run build > /dev/null 2>&1
+        # npm run build > /dev/null 2>&1 # too expensive, makes switching a pain
     '';
 }
