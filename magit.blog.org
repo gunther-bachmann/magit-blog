@@ -1,5 +1,5 @@
 #+Title: Magit Blog
-* meta info
+* Meta info
   - sticker and graphics: https://magit.vc/buy/
   - decide on which repo to use
   - provide repo with emacs startup ini to follow the given examples
@@ -10,47 +10,54 @@
       - closer to cli than graphical user interfaces
     - minor
       - pure keyboard usage is faster, with help screens not much less convenient than guis
-* intro
+* Intro
   This is not about the merits of git. This is about working with git in a text based environment, to which programmers are (usually) used
   to. Having said that, we can now dive into the world of magit, a text based ui for git. You are still reading this? Cool, keep going and
   it might give you a new perspective on how programmers using these /archaic/ interfaces are quite efficient in their daily routine. And
   hey, it's a lot of fun, too! Still reading? Very cool!
-* first repo
-  Let's say you start your life in git with a simple clone like `git clone git@github.com/test-editor/web-test-editor` on the
-  terminal. Since I didn't want to talk about the merits of git, I will restrict my comments about git to a minimum. I will however mention
+* First repo
+  Let's say you start your life in git with a simple clone like `git clone git@github.com/test-editor/test-editor-web` on the
+  terminal. Since I didn't want to talk about the merits of git, I will keep my comments about git to a minimum. I will however mention
   things a seasoned /gitter/ will already know or will believe to be quite obvious, so that anyone interested but not yet familiar with
   every caveat of git will feel comfortable following this article. At least that is my intention.
 
   Now back to our initial clone. This will leave us with a local repository that is cloned from a remote repository. Now what does magit
-  have to offer here. Starting magit[fn:1] on this repository will give you the following screen: <- TODO: insert screenshot -> Let's go
+  have to offer here. Starting magit[fn:1] on this repository will give you the following screen: <- insert screenshot (magit.initial-screen.html) -> Let's go
   through the different sections of this screen:
-  - head
-  - merge
-  - stashes
-  - recent commits
+  - Head ... is your current branch head
+  - Merge ... the remote this branch is /connected/ to
+  - Tag ... is the latest tag in this repo
+  - Recent commits ... is a list of the most recent commits
+  - TODOs ... is a list of locations that mention 'TODO'
+  This initial screen is somewhat related to the output of `git status`. It offers a bit more though of which I will talk in a minute.
+  For those of you who will immediately start magit and try things out, I will quickly introduce some basics on how to interact with magit (don't worry, this won't
+  take long).
 * Magit popup
-  The primary user interface to magit is provided through so called popups (appearing in the lower half of the screen). To get a list of all
-  command keys available use '?' and you will see a /popup/ like this <- TODO: screenshot of magit help popup -> Each magit command will
-  start its respective popup, giving you the chance to add options and switches to the command. Each popup can be customized to use certain
-  options or switches by default. We will look into some of those possibilities later on in the context of certain commands (e.g. commit)
-* basic navigation
+  The primary user interface to magit is provided through screens (information about the repository) and so called popups (details about
+  commands, appearing in the lower half of the screen). To get a list of all command keys available use '?' and you will see a /popup/ like
+  this <- screenshot of magit help popup (magit.help-popup.html) -> Each magit command will start its respective popup, giving you the
+  chance to add options and switches to the command. Each popup can be customized to use certain options or switches by default (options are
+  persisted). We will look into some of those possibilities later on in the context of certain commands (e.g. commit)
+* Basic navigation
   To make use of our textual interface I want to introduce some basic keyboard commands that will be used throughout magit and throughout
   this introduction.
-  - up/down - to move the point or cursor (that was obious, I know)
-  - tab - to open/close details in a tree like fashion
-  - enter - to get details of the item under point or cursor in a separate window
-  - q - to quit to the previous screen
-  Using tab you can fold and unfold several sections on this screen. On other screens (e.g. the following commit details screen) this will
-  be more helpful than it might seem here.
-* own commit
-  Given we have a change on a file already part of the index, the overview will show unstaged changes. These can be staged by simply
-  pressing `s` if the point is over the respective file. `S` (note that this is a capital S) will stage all unstaged files after asking for
-  approval for that action. If you want to stage certain chunks within a file, open its details by pressing `tab`, which opens the relevant
-  chunks within this file, marking changes with -/+ and color and displaying the context (3 preceding/following lines). Each chunk can again
-  be folded/unfolded with `tab` and can individually staged with `s`. You can even mark lines within a chunk that you want to state using
-  `shift` and the cursor keys[fn:2]. <- TODO screenshots ->
+  - up/down ... to move the point or cursor (that was obious, I know)
+  - tab ... to fold/unfold details of the element or rather section under the cursor
+  - enter ... open (or rather enter) the element under the point, this action is heavily dependent on the context
+  - q ... to quit the current screen and return to the previous one
+* Git command line
+  Each interaction with the repository will also print the respective git command line equivalent to another screen that can be reached by
+  pressing '$' (TODO: screenshot). Looking at these commands are especially helpful when starting to use magit. But even for those familiar
+  with magit, a look at the actual git commands executed is informative more often than we like to admit.
+* Commit
+  Given we have a change on a file already part of the index, the overview will show 'Unstaged changes'. (TODO: screenshot unstaged file). These
+  can be staged by simply pressing `s` if the point is over the respective file. `S` (note that this is a capital S) will stage all unstaged
+  files after asking for approval for that action. If you want to stage certain chunks within a file, open its details by pressing `tab`,
+  which opens the relevant chunks within this file, marking changes with -/+ and color and displaying the context (3 preceding/following
+  lines). Each chunk can again be folded/unfolded with `tab` and can individually staged with `s`. You can even mark lines within a chunk
+  that you want to state using `shift` and the cursor keys[fn:2]. <- TODO screenshots ->
 
-  Unstaging via `u` behaves respectively, given that you are working on a file in the staged area.
+  Unstaging via `u` behaves respectively, given that you are working on a file listed under 'Staged changes'.
 
   Given a list of staged changes, pressing `c` will open the commit popup, giving you the chance to use additional switches or options. You
   may now select a simple commit via `c`, amend the previous commit with `a` or reword the previous commit via `w`. There are a lot more
@@ -60,35 +67,92 @@
   of what will be committed, on which branch you currently are and the like. When done hit `C-c` twice (`C-c` `C-k` aborts the
   commit). Given you committed your changes, the status screen is shown again, which presents you with a new, unpushed commit. <- TODO
   screenshot ->
-* log history
-  On status screen, you can press `l` to get to the log popup, which allows you to use additional switches and options for the log. Pressing
+
+  Now let's take a look at the whole command sequence (given that you accept the changes as they are):
+  - S y ... stage all files (and 'y'es I mean that)
+  - c c ... commit my changes (second c to accept the popup without modification)
+  - <enter the commit message>
+  - ctrl-c ctrl-c ... to actually commit
+  Only 6 Keystrokes in addition to the commit message! And hey, you didn't even need to touch your mouse, did you?
+* Log history
+  On status screen, hit `l` to get to the log popup, which allows you to use additional switches and options for the log. Pressing
   `l` again will open the log for the current branch you are on and display the log history. Your new commit should be at the head of this
   list.
-* commit detail
-  Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot.  Tab will fold/unfold changes listed by
-  this commit. To leave this screen simply use 'q'. You see, navigating through these 'screens' is quite easy right at your finger tips!
-* tdd session (create angular project, add jasmine karma unit test, run headless)
-** create branch
-   - branch spin-off
-** add a test (run, commit)
-** write some code (run, commit)
-** add a second test (run, commit)
-** write some more code (run, commit)
-** now squash commits to (partial) feature commit
-   - rebase interactive, squash intermediate commits into one
-** push (partial) feature commit
-* present alternative to command line (bash, zsh and others)
-  most of you know about the command line interface of git.
-* textual interface
-* magit textual interface (popups)
-** every day use cases
-** select relevant changes for staging
-** commit
-** rebase interactive
-** merge/rebase, fix, continue
-** branch spinoff/create/kill
-** stash stash/view/apply/pop
 
+  This list is basically the output of the `git log` command with the additional benefit that you can navigate within this list, copy the
+  hash of a commit (now what might that be useful for?), open a commit and look at the changes that were introduced by it, search for a
+  certain commit message and much, much more.
+
+  You might as well want to look at the tree of another branch, just hit 'l' followed by 'o' for other, select the branch you want to see
+  the log of and there you are. Cherry picking from a commit is as easy as navigating to that commit, pressing 'A' twice (first 'A' opens
+  the cherry pick popup, remember?).
+* Commit detail
+  Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot (TODO: insert screenshot).  Tab will
+  fold/unfold changes listed by this commit. To leave this screen simply use 'q'.
+* TDD session
+  Now that you are familiar with the basics of magit, let's dive into a tdd session supported by magit. We will however focus on the
+  repository actions and will not actually write any code. The actions done via magit are bold, whereas the other actions completing the tdd
+  sessions are kept in italics:
+
+  We will *create a new branch*, /write a test/, /run the test/, *commit*, /write some code/, /run the test again/, *commit*, /refactor the
+  code/, /run the test/, *commit*, *squash the commits*, *push the branch*, make a pull request, see that we have to rebase the master
+  (since someone just merged his new feature), *rebase to origin/master*, *push again*, and finally ci is green and the pull request is
+  accepted.
+
+  Now let's get into the detail of the repository actions involved here:
+  - create new branch ... given that you are on the master branch (and up to date), hit 'b' (branch popup) 's' (spin off), give the branch a
+    name (e.g. 'feature/rock_n_roll'), enter
+  - commit ... (we know that one already) 'c', 'c', commit message (e.g. TEST: test-editor will rock'n'roll hereafter), ctrl-c, ctrl-c
+  - commit ... 'c', 'c', commit message (e.g. CODE: test-editor will rock'n'roll hereafter), ctrl-c, ctrl-c
+  - commit ... 'c', 'c, commit message, ctrl-c, ctrl-c
+  - squash commits ... navigate to first commit, 'r' (rebase) 'i' (interactive), mark commits to squash with 's', ctrl-c, ctrl-c to accept,
+    done (I'll will talk about rebase in the next section)
+  - push ... 'P' (push, note it's a capital P), 'p' (no further options)
+  - rebase to origin/master ... 'r' (rebase) 'e' (elsewhere), select origin/master, done
+  - push ... 'P', 'p'
+  I will not start counting the keystrokes again but it should be obvious that magit tries to reduce the amount of keystrokes to a minimum,
+  while retaining some conceptual consistency and similarity to the command line interface of git. Reducing the overhead of committing (or
+  interacting with the repository) might be argued to be a needless venture compared to the overall effort that goes into writing tests and
+  code passing the tests. I'm convinced that programmers should be relieved as much as possible of chores that will slow down their tdd
+  cycle. Programmers must use version control for several reasons (hopefully git, so that magit can be used). Keeping
+  friction to a minimum is a goal absolutely worth pursuing. Do your Dojos! Use magit! Be efficient! <- oops, the quote sneaked in ;-)
+* Rebase
+  Those of you familiar with git have definitely used rebase to bring some order to your commits. Keeping your git history clean is a
+  benefit to all within your project. Rebasing will therefor constantly accompany you on every non trivial git project. Resolving conflicts
+  will hopefully be at a minimum (given that your features are small enough to not stir up too much dust, and large enough to provide a
+  useful feature).
+
+  Let's start with a rebase without conflicts. Magit offers an interface again very similar to the git command line. Everyone who has used
+  `git interactive` will feel at home. The main benefit here is probably only the ease of selecting the commit onto which to rebase.
+
+  Once you selected the commits to squash, reordered the commits as you see fit, start rebasing by pressing ctrl-c, ctrl-c (this is no typo,
+  you have to press ctrl-c twice). If there is no conflict, the rebase is through.
+
+  In the case of conflicts, magit lists all files for which a manual conflict resolution is necessary. Depending on the tooling that is
+  configured for merging, you can start the conflict resolution right from here. 'E', 'm' will bring up a three way merge screen (theirs,
+  mine, common parent) for conflict resolution. Once the conflict is resolved, update your status screen ('g') and the conflict should
+  disappear. Once all conflicts are gone, continue the once started rebase with 'r', 'r'. If you want to abort this rebase, hit 'r', 'a' to
+  abort and all will be undone up to the point where you started to rebase.
+* Lost a commit?
+  Commits are hard to get rid off. If you ever found yourself in the position that /this change/ you definitely made, somehow got lost
+  (usually after you rewrote your history through rebases, force pushes and the like), you are well advised to take a look at the ref logs
+  (only the garbage collector of git will remove them if called). E.g. 'y' 'r' brings up the (local) ref log of the current branch. You can
+  inspect the commits or even cherry pick from them (if need be). You might never need to look here (I needed to only once, up to now), but
+  it is very comforting to know that git lets you still access them.
+
+* Feature complete?
+  Since all features of git are accessible on the command line and magit does well in keeping pace with all new features git has to provide,
+  there might be the time when even magit users make use of the command line. This is absolutely not discouraged! Since magit has no own
+  view on the repository but utilizes git for each interaction with it, issuing commands on the command line will never disrupt magit or
+  your use of it (don't forget to refresh your screens though). So using magit is not an all in decision. It can as well be a helpful
+  addition to your cli. You might notice however that dropping back to the cli will become less often the more you get to know magit.
+
+* Wrap up
+  Git is a wonderful tool on its own. It let's you collaborate and organize your changes in a very flexible way. Git integration within
+  editors and IDEs is useful but often too restrictive to leverage the power of git making many a programmer return to the command
+  line. Using zsh, aliases and short-cuts defined with git itself, programmers try to reduce the friction necessarily felt, when interacting
+  with the repository. Magit reduces the friction of interacting with git repositories even further and allows nearly friction less tdd
+  cycles while retaining the full power of git.
 * Footnotes
 
 [fn:2] More emacs like are `C-SPC` and then movement commands as `C-p` or `C-n` (previous/next line)
