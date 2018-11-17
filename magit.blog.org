@@ -47,10 +47,10 @@
   - q ... to quit the current screen and return to the previous one
 * Git command line
   Each interaction with the repository will also print the respective git command line equivalent to another screen that can be reached by
-  pressing '$' (TODO: screenshot). Looking at these commands are especially helpful when starting to use magit. But even for those familiar
+  pressing '$' <- TODO: screenshot ->. Looking at these commands are especially helpful when starting to use magit. But even for those familiar
   with magit, a look at the actual git commands executed is informative more often than we like to admit.
 * Commit
-  Given we have a change on a file already part of the index, the overview will show 'Unstaged changes'. (TODO: screenshot unstaged file). These
+  Given we have a change on a file already part of the index, the overview will show 'Unstaged changes'. <- TODO: screenshot unstaged file ->. These
   can be staged by simply pressing `s` if the point is over the respective file. `S` (note that this is a capital S) will stage all unstaged
   files after asking for approval for that action. If you want to stage certain chunks within a file, open its details by pressing `tab`,
   which opens the relevant chunks within this file, marking changes with -/+ and color and displaying the context (3 preceding/following
@@ -65,8 +65,7 @@
 
   Say you stick with a regular commit, you are then presented with a screen to write the commit message. The commit message holds reminders
   of what will be committed, on which branch you currently are and the like. When done hit `C-c` twice (`C-c` `C-k` aborts the
-  commit). Given you committed your changes, the status screen is shown again, which presents you with a new, unpushed commit. <- TODO
-  screenshot ->
+  commit). Given you committed your changes, the status screen is shown again, which presents you with a new, unpushed commit. <- TODO: screenshot ->
 
   Now let's take a look at the whole command sequence (given that you accept the changes as they are):
   - S y ... stage all files (and 'y'es I mean that)
@@ -87,7 +86,7 @@
   the log of and there you are. Cherry picking from a commit is as easy as navigating to that commit, pressing 'A' twice (first 'A' opens
   the cherry pick popup, remember?).
 * Commit detail
-  Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot (TODO: insert screenshot).  Tab will
+  Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot <- TODO: insert screenshot ->.  Tab will
   fold/unfold changes listed by this commit. To leave this screen simply use 'q'.
 * TDD session
   Now that you are familiar with the basics of magit, let's dive into a tdd session supported by magit. We will however focus on the
