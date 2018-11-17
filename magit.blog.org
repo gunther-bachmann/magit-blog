@@ -22,8 +22,9 @@
   every caveat of git will feel comfortable following this article. At least that is my intention.
 
   Now back to our initial clone. This will leave us with a local repository that is cloned from a remote repository. Now what does magit
-  have to offer here. Starting magit[fn:1] on this repository will give you the following screen: <- insert screenshot (magit.initial-screen.html) -> Let's go
-  through the different sections of this screen:
+  have to offer here. Starting magit[fn:1] on this repository will give you the following screen:
+[[file:magit.initial-screen.png]]
+Let's go through the different sections of this screen:
   - Head ... is your current branch head
   - Merge ... the remote this branch is /connected/ to
   - Tag ... is the latest tag in this repo
@@ -35,7 +36,9 @@
 * Magit popup
   The primary user interface to magit is provided through screens (information about the repository) and so called popups (details about
   commands, appearing in the lower half of the screen). To get a list of all command keys available use '?' and you will see a /popup/ like
-  this <- screenshot of magit help popup (magit.help-popup.html) -> Each magit command will start its respective popup, giving you the
+  this:
+[[file:magit.help-popup.png]]
+  Each magit command will start its respective popup, giving you the
   chance to add options and switches to the command. Each popup can be customized to use certain options or switches by default (options are
   persisted). We will look into some of those possibilities later on in the context of certain commands (e.g. commit)
 * Basic navigation
@@ -47,17 +50,24 @@
   - q ... to quit the current screen and return to the previous one
 * Git command line
   Each interaction with the repository will also print the respective git command line equivalent to another screen that can be reached by
-  pressing '$' <- TODO: screenshot ->. Looking at these commands are especially helpful when starting to use magit. But even for those familiar
+  pressing '$':
+[[file:magit.git-commands.png]]
+  Looking at these commands are especially helpful when starting to use magit. But even for those familiar
   with magit, a look at the actual git commands executed is informative more often than we like to admit.
 * Commit
-  Given we have a change on a file already part of the index, the overview will show 'Unstaged changes'. <- TODO: screenshot unstaged file ->. These
-  can be staged by simply pressing `s` if the point is over the respective file. `S` (note that this is a capital S) will stage all unstaged
+  Given we have a change on a file already part of the index, the overview will show 'Unstaged changes'.
+[[file:magit.unstaged-changes.png]]
+  These can be staged by simply pressing `s` if the point is over the respective file. `S` (note that this is a capital S) will stage all unstaged
   files after asking for approval for that action. If you want to stage certain chunks within a file, open its details by pressing `tab`,
   which opens the relevant chunks within this file, marking changes with -/+ and color and displaying the context (3 preceding/following
   lines). Each chunk can again be folded/unfolded with `tab` and can individually staged with `s`. You can even mark lines within a chunk
-  that you want to state using `shift` and the cursor keys[fn:2]. <- TODO screenshots ->
+  that you want to state using `shift` and the cursor keys[fn:2].
+[[file:magit.changes-detail.png]]
 
   Unstaging via `u` behaves respectively, given that you are working on a file listed under 'Staged changes'.
+
+  Before actually committing any changes on the master branch, it is a good idea to open a feature branch hitting 'b' (branch) then 's' (spin-off),
+  naming it e.g. 'feature/added_tutorial_ref_to_readme'.
 
   Given a list of staged changes, pressing `c` will open the commit popup, giving you the chance to use additional switches or options. You
   may now select a simple commit via `c`, amend the previous commit with `a` or reword the previous commit via `w`. There are a lot more
@@ -65,18 +75,23 @@
 
   Say you stick with a regular commit, you are then presented with a screen to write the commit message. The commit message holds reminders
   of what will be committed, on which branch you currently are and the like. When done hit `C-c` twice (`C-c` `C-k` aborts the
-  commit). Given you committed your changes, the status screen is shown again, which presents you with a new, unpushed commit. <- TODO: screenshot ->
+  commit). Given you committed your changes, the status screen is shown again, which presents you with a new, (unpushed) commit in the
+  recent commit list.
+[[file:magit.branch-unpushed-commit.png]]
 
   Now let's take a look at the whole command sequence (given that you accept the changes as they are):
   - S y ... stage all files (and 'y'es I mean that)
+  - b s ... spin off a new branch from master (which you are currently on)
+  - <enter new branch name>
   - c c ... commit my changes (second c to accept the popup without modification)
   - <enter the commit message>
   - ctrl-c ctrl-c ... to actually commit
-  Only 6 Keystrokes in addition to the commit message! And hey, you didn't even need to touch your mouse, did you?
+  Only 8 keystrokes plus branch name and commit message! And hey, you didn't even need to touch your mouse, did you?
 * Log history
   On status screen, hit `l` to get to the log popup, which allows you to use additional switches and options for the log. Pressing
   `l` again will open the log for the current branch you are on and display the log history. Your new commit should be at the head of this
   list.
+[[file:magit.log.png]]
 
   This list is basically the output of the `git log` command with the additional benefit that you can navigate within this list, copy the
   hash of a commit (now what might that be useful for?), open a commit and look at the changes that were introduced by it, search for a
@@ -86,8 +101,9 @@
   the log of and there you are. Cherry picking from a commit is as easy as navigating to that commit, pressing 'A' twice (first 'A' opens
   the cherry pick popup, remember?).
 * Commit detail
-  Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot <- TODO: insert screenshot ->.  Tab will
-  fold/unfold changes listed by this commit. To leave this screen simply use 'q'.
+  Using `enter` on a commit will provide a detailed view of this commit as seen in this screenshot:
+[[file:magit.commit-detail.png]]
+  Tab will fold/unfold changes listed by this commit. To leave this screen simply use 'q'.
 * TDD session
   Now that you are familiar with the basics of magit, let's dive into a tdd session supported by magit. We will however focus on the
   repository actions and will not actually write any code. The actions done via magit are bold, whereas the other actions completing the tdd
@@ -156,5 +172,5 @@
 
 [fn:2] More emacs like are `C-SPC` and then movement commands as `C-p` or `C-n` (previous/next line)
 
-[fn:1] If you want to follow the examples, please clone this repository <- TODO: put the repository link here -> that holds a readme with
-all prerequisites you need and a couple of scripts that will make your life easier.
+[fn:1] If you want to follow the examples, please clone this repository `https://github.com/gunther-bachmann/magit-blog` that holds a readme
+with all prerequisites you need and a couple of scripts that will make your life easier.
