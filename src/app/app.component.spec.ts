@@ -30,7 +30,17 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to dummy!');
   }));
 
-  it('should do adding right', () => {
-    expect(1 + 1).toBeLessThanOrEqual(2);
-  });
+  // it('should do adding right', () => {
+  //   expect(1 + 1).toBeLessThanOrEqual(2);
+  // });
+
+  // it('is zero?', () => {
+  //   expect(1 - 1).toEqual(0);
+  // });
+
+  // it('greets correctly', () => {
+  //   const greeting = app.greet('Gunther');
+  //   expect(greeting).toEqual('Pleased to meet you.');
+  // });
+
 });

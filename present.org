@@ -1,0 +1,9 @@
+#+title: Present
+* main screen
+* help (popup)
+* log screen
+* stashing
+* commit
+* push
+* branch spin off
+* rebase
