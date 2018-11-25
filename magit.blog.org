@@ -146,7 +146,10 @@
   useful feature).
 
   Let's start with a rebase without conflicts. Magit offers an interface again very similar to the git command line. Everyone who has used
-  =git rebase --interactive= will feel at home. The main benefit here is probably only the ease of selecting the commit onto which to rebase.
+  =git rebase --interactive= will feel at home. The main benefit here is probably only the ease of selecting the commit onto which to
+  rebase.
+
+  [[file:magit.rebase.png]]
 
   Once you selected the commits to squash, reordered the commits as you see fit, start rebasing by pressing =ctrl-c=, =ctrl-c= (this is no typo,
   you have to press =ctrl-c= twice). If there is no conflict, the rebase is through.
@@ -162,6 +165,8 @@
   (only the garbage collector of git will remove them if called). E.g. '=y=' '=r=' brings up the (local) ref log of the current branch. You can
   inspect the commits or even cherry pick from them (if need be). You might never need to look here (I needed to only once, up to now), but
   it is very comforting to know that git lets you still access them.
+
+  [[file:magit.ref-log.png]]
 
 * Feature complete?
   Since all features of git are accessible on the command line and magit does well in keeping pace with all new features git has to provide.
