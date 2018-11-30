@@ -3,10 +3,11 @@ with import <nixpkgs> {};
 stdenv.mkDerivation {
     name = "magit-demo-web-project-setup";
     buildInputs = [
-        nodejs-9_x
+        nodejs
         nodePackages.npm
         nodePackages.jsonlint
         bashInteractive
+        emacs
     ];
     shellHook = ''
         # make sure no output is done, since direnv fails with direnv: error unmarshal() base64 decoding: illegal base64 data at input byte ?

@@ -31,5 +31,5 @@
   :ensure t
   :bind (:map magit-status-mode-map
          ("q" . kill-emacs))
-  :config (let ((pop-up-windows nil))
+  :init (let ((pop-up-windows nil))
             (call-interactively 'magit-status)))
