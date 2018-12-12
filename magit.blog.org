@@ -54,7 +54,7 @@
   files after asking for approval for that action. If you want to stage certain chunks within a file, unfold its details by pressing =tab=,
   which opens the relevant chunks within this file, marking changes with -/+, color, and displaying the context of the change (3 preceding/following
   lines). Each chunk can again be folded/unfolded with =tab= and can be individually staged with '=s='. You can even mark lines within a chunk
-  that you want to state using =shift= and the cursor keys[fn:2].
+  that you want to stage using =shift= and the cursor keys[fn:2].
   [[file:magit.changes-detail.png]]
 
   Unstaging via '=u=' behaves respectively, given that you are working on a file listed under =Staged changes=.
@@ -64,10 +64,10 @@
 
   Given a list of staged changes, pressing '=c=' will open the commit popup. Giving you the chance to use additional switches or options. You
   may now select a simple commit via '=c=', amend the previous commit with '=a=' or reword the previous commit via '=w='. There are a lot more
-  subcommands available that you may explore at your discretion.
+  sub commands available that you may explore at your discretion.
 
   Say you stick with a regular commit, you are then presented with a screen to write the commit message. The commit message holds reminders
-  of what will be committed, on which branch you currently are and the like. When done hit =C-c= twice (=C-c'= ='C-k= aborts the
+  of what will be committed, on which branch you currently are and the like. When done, hit =C-c= twice (=C-c'= ='C-k= aborts the
   commit). Given you committed your changes, the status screen is shown again, which presents you with a new, (unpushed) commit in the
   recent commit list.
  [[file:magit.branch-unpushed-commit.png]]
@@ -90,7 +90,7 @@
   - navigate within this list
   - copy the hash of a commit (now what might that be useful for?)
   - open a commit and look at the changes that were introduced by it
-  - search for a  certain commit message
+  - search for a certain commit message
   and much, much more.
 
   You might as well want to look at the tree of another branch, just hit '=l=' followed by '=o=' for other, select the branch you want to see
@@ -141,7 +141,7 @@
   friction to a minimum is a goal absolutely worth pursuing. Do your Dojos! Use magit! Be efficient! <- oops, the quote sneaked in ;-)
 * Rebase
   Those of you familiar with git have definitely used =rebase= to bring some order to your commits. Keeping your git history clean is a
-  benefit to all within your project. Rebasing will therefor constantly accompany you on every non trivial git project. Resolving conflicts
+  benefit to all within your project. Rebasing will therefor constantly accompany you on every non-trivial git project. Resolving conflicts
   will hopefully be at a minimum (given that your features are small enough to not stir up too much dust, and large enough to provide a
   useful feature).
 
@@ -155,12 +155,12 @@
   you have to press =ctrl-c= twice). If there is no conflict, the rebase is through.
 
   In the case of conflicts, magit lists all files for which a manual conflict resolution is necessary. Depending on the tooling that is
-  configured for merging, you can start the conflict resolution right from here. '=E=', '=m=' will bring up a three way merge screen (theirs,
+  configured for merging, you can start the conflict resolution right from here. '=E=', '=m=' will bring up a three-way merge screen (theirs,
   mine, common parent) for conflict resolution. Once the conflict is resolved, update your status screen ('=g=') and the conflict should
   disappear. Once all conflicts are gone, continue the once started rebase with '=r=', '=r='. If you want to abort this rebase, hit '=r=', '=a=' to
   abort and all will be undone up to the point where you started to rebase.
 * Lost a commit?
-  Commits are hard to get rid off. If you ever found yourself in the position that /this change/ you definitely made, somehow got lost
+  Commits are hard to get rid of. If you ever found yourself in the position that /this change/ you definitely made, somehow got lost
   (usually after you rewrote your history through rebases, force pushes and the like), you are well advised to take a look at the ref logs
   (only the garbage collector of git will remove them if called). E.g. '=y=' '=r=' brings up the (local) ref log of the current branch. You can
   inspect the commits or even cherry pick from them (if need be). You might never need to look here (I needed to only once, up to now), but
@@ -176,7 +176,7 @@
   addition to your cli. You might notice however that dropping back to the cli will become less often the more you get to know magit.
 
 * Wrap up
-  Git is a wonderful tool on its own. It let's you collaborate and organize your changes in a very flexible way. Git integration within
+  Git is a wonderful tool on its own. It lets you collaborate and organize your changes in a very flexible way. Git integration within
   editors and IDEs is useful but often too restrictive to leverage the power of git, making many a programmer return to the command
   line. Using zsh, aliases and short-cuts defined with git itself, programmers try to reduce the friction necessarily felt, when interacting
   with the repository. Magit reduces the friction of interacting with git repositories even further and allows nearly friction less tdd
